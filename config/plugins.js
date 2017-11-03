@@ -1,6 +1,6 @@
 const { join } = require('path')
 const dist = join(__dirname, '../dist')
-const src = join(__dirname, '../app')
+const src = join(__dirname, '../src')
 const webpack = require('webpack')
 //const CleanPlugin = require('clean-webpack-plugin')
 //const CopyPlugin = require('copy-webpack-plugin')
@@ -13,7 +13,7 @@ module.exports = (isProd, options = {}) => {
 		new webpack.DefinePlugin({
         'process.env.NODE_ENV': isProd ? JSON.stringify('production') : JSON.stringify('development')
     }),
-		new webpack.LoaderOptionsPlugin({
+		/*new webpack.LoaderOptionsPlugin({
 			options: {
 				babel: {
 					presets: [
@@ -21,7 +21,7 @@ module.exports = (isProd, options = {}) => {
 					]
 				}
 			}
-		}),
+		}),*/
 		new HtmlPlugin({
 			title: 'Yo',
 			template: join(src,'index.html')

@@ -4,6 +4,7 @@ const extractTextMain = new ExtractText({
 	allChunks: true
 });
 const { join } = require('path');
+const srcPath = join(__dirname, 'src');
 const dist = join(__dirname, './dist');
 const plugins = require('./config/plugins');
 const exclude = /node_modules/;
@@ -12,28 +13,36 @@ module.exports = env => {
 	const isProd = env && env.production;
 	return {
 		entry: {
-			main: './app/scripts/index.js',
+			main: './src/index.jsx',
 		},
 		output: {
 			path: dist,
-			filename: 'scripts/[name].js',
+			filename: '[name].js',
 			publicPath: '/'
 		},
 		module: {
 			rules: [
 				{
-					test: /\.js$/,
-					exclude: exclude,
+					test: /\.jsx$/,
+					include: srcPath,
 					use: 'babel-loader'
 				},
-
         {
           test: /\.svg$/,
-          use: [
-            { loader: 'svg-sprite-loader', options: { /* todo */ } },
-            //'svg-fill-loader',
-            { loader: 'svgo-loader', options: { /* todo */ } }
-          ]
+          include: join(srcPath, 'img/icons/svg'),
+          loaders: [
+                  'svg-sprite-loader?' + JSON.stringify({
+                    name: '[name].[hash]',
+                    prefixize: true
+                  }),
+                  'svgo-loader?' + JSON.stringify({
+                    plugins: [
+                      { removeTitle: true },
+                      { convertPathData: false },
+                      { removeUselessStrokeAndFill: true }
+                    ]
+                  })
+                ]
         },
         {
           test: /\.css$/,
