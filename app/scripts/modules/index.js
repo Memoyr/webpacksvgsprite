@@ -1,4 +1,4 @@
 const data = {
-	name: 'Fantastic ES6 Application'
+	name: '- - - '
 }
 export default data

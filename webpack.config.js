@@ -29,11 +29,20 @@ module.exports = env => {
 
         {
           test: /\.svg$/,
-          use: [
-            { loader: 'svg-sprite-loader', options: { /* todo */ } },
-            //'svg-fill-loader',
-            { loader: 'svgo-loader', options: { /* todo */ } }
-          ]
+					include: join(srcPath, 'img/icons/svg'),
+          loaders: [
+                  'svg-sprite-loader?' + JSON.stringify({
+                    name: '[name].[hash]',
+                    prefixize: true
+                  }),
+                  'svgo-loader?' + JSON.stringify({
+                    plugins: [
+                      { removeTitle: true },
+                      { convertPathData: false },
+                      { removeUselessStrokeAndFill: true }
+                    ]
+                  })
+						]
         },
         {
           test: /\.css$/,
