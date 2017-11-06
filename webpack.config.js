@@ -5,6 +5,7 @@ const extractTextMain = new ExtractText({
 });
 const { join } = require('path');
 const dist = join(__dirname, './dist');
+const srcPath = join(__dirname, './app');
 const plugins = require('./config/plugins');
 const exclude = /node_modules/;
 

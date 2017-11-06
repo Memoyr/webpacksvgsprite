@@ -1,4 +1,4 @@
 const data = {
-	name: '- - - '
+	name: 'icon loader POC'
 }
 export default data
