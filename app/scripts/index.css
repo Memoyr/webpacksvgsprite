@@ -1,0 +1,18 @@
+/* Integration demo */
+.custom-class-named-test {
+  fill: red;
+}
+
+.custom-class-named-test2 {
+  width: 64px;
+  height: 64px;
+}
+
+.custom-class-named-test3 {
+  width: 120px;
+  height: 120px;
+}
+
+.custom-class-named-test4 {
+  stroke-width: 10px;
+}

@@ -1,15 +1,25 @@
+
+/* default values (plain icon )*/
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   fill: #000;
 }
 
-.icon--small {
-  width: 10px;
-  height: 10px;
+/* default values (stroke icon )*/
+.icon--stroke {
+  fill: transparent;
+  stroke: #000;
 }
 
-.icon--big {
-  width: 30px;
-  height: 30px;
+
+/* here is where will live predefined size (advised by our Visual and UX designers )*/
+.icon--small {
+  width: 16px;
+  height: 16px;
+}
+
+.icon--large {
+  width: 64px;
+  height: 64px;
 }
