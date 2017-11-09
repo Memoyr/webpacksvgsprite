@@ -18,7 +18,7 @@ module.exports = env => {
 		output: {
 			path: dist,
 			filename: 'scripts/[name].js',
-			publicPath: '/'
+			publicPath: './'
 		},
 		module: {
 			rules: [

@@ -1,5 +1,10 @@
 /* Here Global styles only */
 
+/* note this is not a usable basic style sheet - please follow your common pratice for css integration
+ex: add a your favorite reset css,
+postcss-loader, css-next loaders, etc.
+*/
+
 body {
   background-color: white;
 }
