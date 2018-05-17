@@ -27,32 +27,31 @@ module.exports = env => {
 					exclude: exclude,
 					use: 'babel-loader'
 				},
-
-        {
-          test: /\.svg$/,
-					include: join(srcPath, 'img/icons/svg'),
-          loaders: [
-                  'svg-sprite-loader?' + JSON.stringify({
-                    name: '[name].[hash]',
-                    prefixize: true
-                  }),
-                  'svgo-loader?' + JSON.stringify({
-                    plugins: [
-                      { removeTitle: true },
-                      { convertPathData: false },
-                      { removeUselessStrokeAndFill: true }
-                    ]
-                  })
-						]
-        },
-        {
-          test: /\.css$/,
-					loader: isProd ?  extractTextMain.extract({
-						fallback: 'style-loader',
-						use: 'css-loader'
-					}) : 'style-loader!css-loader'
-        }
-			]
+				{
+				  test: /\.svg$/,
+				  include: join(srcPath, 'img/icons/svg'),
+				  loaders: [
+					  'svg-sprite-loader?' + JSON.stringify({
+					    name: '[name].[hash]',
+					    prefixize: true
+					  }),
+					  'svgo-loader?' + JSON.stringify({
+					    plugins: [
+					      { removeTitle: true },
+					      { convertPathData: false },
+					      { removeUselessStrokeAndFill: true }
+					    ]
+					  })
+				  ]
+				},
+				{
+				  test: /\.css$/,
+				  loader: isProd ?  extractTextMain.extract({
+					fallback: 'style-loader',
+					use: 'css-loader'
+				   }) : 'style-loader!css-loader'
+				 }
+			  ]
 		},
 		plugins: plugins(isProd, {
 			extractTextPlugin: {
